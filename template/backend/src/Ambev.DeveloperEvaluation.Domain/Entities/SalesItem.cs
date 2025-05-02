@@ -1,16 +1,16 @@
 ﻿namespace Ambev.DeveloperEvaluation.Domain.Entities;
 public class SalesItem
 {
-    public string Produto { get; }
-    public decimal PrecoUnitario { get; }
-    public int Quantidade { get; }
-    public decimal Desconto { get; }
-    public decimal ValorTotal => Quantidade * PrecoUnitario * (1 - Desconto);
-    public SalesItem(string produto, decimal preco, int quantidade, decimal desconto)
+    public string Product { get; }
+    public decimal PriceUnit { get; }
+    public int Amount { get; }
+    public decimal Discount { get; }
+    public decimal ValorTotal => Amount * PriceUnit * (1 - Discount);
+    public SalesItem(string product, decimal priceUnit, int amount, decimal discount)
     {
-        Produto = produto;
-        PrecoUnitario = preco;
-        Quantidade = quantidade;
-        Desconto = desconto;
+        Product = product;
+        PriceUnit = priceUnit;
+        Amount = amount;
+        Discount = discount;
     }
 }

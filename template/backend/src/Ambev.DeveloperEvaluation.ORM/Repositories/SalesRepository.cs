@@ -22,7 +22,7 @@ public class SalesRepository : ISalesRepository
     public async Task<Sales?> GetByNumberAsync(string number, CancellationToken cancellationToken = default)
     {
         return await _context.Sales
-            .FirstOrDefaultAsync(x => x.Numero == number, cancellationToken);
+            .FirstOrDefaultAsync(x => x.Number == number, cancellationToken);
     }
 
     public async Task<Sales> GetAll() => await _context.Sales.FirstOrDefaultAsync();

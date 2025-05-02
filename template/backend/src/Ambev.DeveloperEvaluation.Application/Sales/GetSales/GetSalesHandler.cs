@@ -2,6 +2,7 @@
 using AutoMapper;
 using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace Ambev.DeveloperEvaluation.Application.Sales.GetSales;
 
@@ -10,12 +11,14 @@ public class GetSalesHandler : IRequestHandler<GetSalesCommand, GetSalesResult>
     private readonly ISalesRepository _salesRepository;
     private readonly IMapper _mapper;
 
+    private readonly ILogger<GetSalesHandler> _logger;
     public GetSalesHandler(
         ISalesRepository salesRepository,
-        IMapper mapper)
+        IMapper mapper, ILogger<GetSalesHandler> logger)
     {
         _salesRepository = salesRepository;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<GetSalesResult> Handle(GetSalesCommand request, CancellationToken cancellationToken)
@@ -25,6 +28,8 @@ public class GetSalesHandler : IRequestHandler<GetSalesCommand, GetSalesResult>
 
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
+
+        _logger.LogInformation("Buscando venda com número {Number}", request.Number);
 
         var sales = await _salesRepository.GetByNumberAsync(request.Number, cancellationToken);
         if (sales == null)

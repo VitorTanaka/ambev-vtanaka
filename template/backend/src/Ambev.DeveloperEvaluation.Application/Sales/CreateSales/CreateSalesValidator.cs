@@ -6,9 +6,9 @@ public class CreateSalesCommandValidator : AbstractValidator<CreateSalesCommand>
 {
     public CreateSalesCommandValidator()
     {
-        RuleFor(x => x.Numero).NotEmpty();
-        RuleFor(x => x.Data).NotEmpty().WithMessage("campo obrigatório");
-        RuleFor(x => x.Cliente).NotEmpty();
-        RuleFor(x => x.Filial).NotEmpty();
+        RuleFor(x => x.Number).NotEmpty();
+        RuleFor(x => x.Date).NotEmpty().WithMessage("campo obrigatório");
+        RuleFor(x => x.Client).NotEmpty();
+        RuleFor(x => x.CompanyBranch).NotEmpty();
     }
 }

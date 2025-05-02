@@ -4,10 +4,10 @@ using MediatR;
 namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSales;
 public class CreateSalesCommand : IRequest<CreateSalesResult>
 {
-    public string Numero { get; set; } = string.Empty;
-    public DateTime Data { get; private set; }
-    public string Cliente { get; set; } = string.Empty;
-    public string Filial { get; set; } = string.Empty;
+    public string Number { get; set; } = string.Empty;
+    public DateTime Date { get; private set; }
+    public string Client { get; set; } = string.Empty;
+    public string CompanyBranch { get; set; } = string.Empty;
 
 
     public ValidationResultDetail Validate()
